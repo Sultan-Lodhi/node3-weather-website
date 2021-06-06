@@ -61,12 +61,15 @@ app.get('/weather', (req, res) => {
     }
     const url = 'http://api.weatherstack.com/current?access_key=8bfcae9216b56729ca9606c760ebb0de&query='+req.query.address;
 
-    request({ url: url, json: true}, (error, response)=>{
+    request({ url: url, json: true}, (error, {body}={})=>{
         if(error) return res.send(error)
 
-        const data = response.body
-        res.send(data)
-
+        const data = {
+            location: body.location.name+', '+body.location.country,
+            temperature: body.current.temperature,
+            humidity: body.current.humidity
+        }
+        res.send("<body style='max-width: 650px;margin: 0 auto;padding: 0 16px;margin-top:117px !important'><h1>Location: "+ data.location+"</h1><h2 style='color:grey'>Current Temperature of "+body.location.name+" is "+data.temperature+" degrees and humdity is "+data.humidity+" degrees</h2><a href='/'>Go back</a></body")
     })
 })
 
