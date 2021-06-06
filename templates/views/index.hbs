@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!-- this includes style.css file -->
+        <!-- href = "/css/style.css" : this path means rootdirectory which is set in app.use then /css ...etc  -->
+        <!-- href = "./css/style.css" : this path means ./ taking to current directory which is src then adding /css ...etc -->
+        <link rel = "stylesheet" href = "/css/style.css">
+        <!-- To include js file -->
+        <script src = "/js/app.js"></script>
+    </head>
+
+    <body>
+        {{>header}}
+        <div>
+            <input placeholder="location">
+            <button>Search</button>
+        </div>
+        {{>footer}}
+    </body>
+</html>
