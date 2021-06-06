@@ -9,6 +9,9 @@ const hbs = require('hbs') // for partials
 // /var/www/Personal_Projects/node_course_1/web-server/src/app.js
 
 const app = express() // this line creating new express application
+//to set up ports of heroku or local
+const port = process.env.PORT || 3000;
+
 const publicDirPath = path.join(__dirname, '../public')
 
 // template engines using handle bars to create dynamic html content
@@ -78,6 +81,6 @@ app.get('*', (req, res) => {
 
 //start a server up
 
-app.listen(3000, () => {
-    console.log('server is up on port 3000.') // not displayed to browser
+app.listen(port, () => {
+    console.log('server is up on port ' + port) // not displayed to browser
 })
